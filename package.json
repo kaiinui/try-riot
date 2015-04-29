@@ -7,9 +7,11 @@
     "devDependencies": {
         "riot": "latest",
         "watch": "latest",
-        "uglify": "latest"
+        "uglify": "latest",
+        "parallelshell": "latest"
     },
     "scripts": {
+        "dev": "parallelshell 'npm run build:watch' 'npm run server'",
         "build:watch": "watch 'npm run build' src/",
         "build": "riot src build && cat node_modules/riot/riot.min.js build/book.js > build/bundle.js && uglify -s build/bundle.js -o build/bundle.min.js",
         "server": "python -m SimpleHTTPServer"
